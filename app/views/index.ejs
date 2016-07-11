@@ -1,0 +1,28 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <form method="POST"> 
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="user" id="user"/></td>
+            </tr>
+            <tr>
+                <td>Message:</td>
+                <td><input type="text" name="message" id="message"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                <input type="submit" name="submit">
+                </td>
+            </tr>
+        </table>
+        </form>
+        <p name="enteredName"><%= message %></p>
+        <p name="enteredUser"><%= user %></p>
+        <p name="enteredText"><%= data %></p>
+        <p name="enteredDate"><%= date %></p>
+    </body>
+</html>

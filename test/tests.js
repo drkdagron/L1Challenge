@@ -50,7 +50,7 @@ describe('Form entry', function() {
         browser.visit('/', function()
         { 
             browser.assert.attribute('form', 'method', 'POST');
-            browser.assert.element('form input[name=username]');
+            browser.assert.element('form input[name=message]');
             done(); 
         });
     });
@@ -60,7 +60,7 @@ describe('Form entry', function() {
             return browser.visit('/');
         });
         before(function() {
-            browser.fill('username', 'Testing');
+            browser.fill('message', 'Testing');
             return browser.pressButton('submit');
         });
 
@@ -74,6 +74,32 @@ describe('Form entry', function() {
         });
 
         
+    });
+});
+describe ('Username', function() {
+    it ('should show user', function(done){
+        browser.visit('/', function() {
+            browser.assert.element('form input[name=user]');
+            done();
+        });
+    });
+    describe('Submit new form', function() {
+        before (function() {
+            return browser.visit('/');
+        });
+        before(function() {
+            browser.fill('message', "Debug");
+            browser.fill('user', "Test User");
+            return browser.pressButton('submit');
+        });
+        it ('Should be successful', function(done) {
+            browser.assert.success();
+            done();
+        });
+        it ('Should appear on page', function(done) {
+            expect(browser.html('body')).to.contain('Debug');
+            done();
+        });
     });
 });
 
