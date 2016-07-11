@@ -1,11 +1,16 @@
 var request = require('supertest');
 var expect = require('chai').expect;
+var Browser = require('zombie');
+var assert = require('assert');
+var url = 'http://localhost:3000/';
+var browser;
 
 var server;
 describe('Loyalty One Tests', function() {
 
 before(function () {
     server = require('../server');
+    browser = new Browser({site: 'http://localhost:3000'});
 });
 
 after (function () {
@@ -24,7 +29,6 @@ describe('Server starting', function() {
             .expect (404, done);
     });
 });
-
 describe('REST return text', function () {
     it ('Recieve 201 status if calling rest', function seperateStatus(done) {
         request(server)
@@ -41,6 +45,36 @@ describe('REST return text', function () {
             });
     });
 });
+describe('Form entry', function() {
+    it ('Should show form', function(done){ 
+        browser.visit('/', function()
+        { 
+            browser.assert.attribute('form', 'method', 'POST');
+            browser.assert.element('form input[name=username]');
+            done(); 
+        });
+    });
+    describe ('Submit Form', function() {
 
+        before(function() {
+            return browser.visit('/');
+        });
+        before(function() {
+            browser.fill('username', 'Testing');
+            return browser.pressButton('submit');
+        });
+
+        it ("Should be successful", function(done) {
+            browser.assert.success();
+            done();
+        });
+        it ('Should appear on page', function (done) {
+            expect(browser.html("body")).to.contain('Testing');
+            done();
+        });
+
+        
+    });
+});
 
 });

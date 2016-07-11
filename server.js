@@ -3,10 +3,13 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.urlencoded({extended: false }));
 app.use(bodyParser.json());
-app.use('view-engine', 'ejs');
+app.set('view engine', 'ejs');
 
+app.post('/', function(req, res) {
+    res.render('index', {username: req.body.username});
+});
 app.get('/', function(req, res) {
-    res.status(200).send("Hello World");
+    res.render('index', { username: "Nothing entered" });
 });
 
 app.get('/api/:response', function(req, res){
