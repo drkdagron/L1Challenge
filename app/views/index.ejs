@@ -1,28 +1,44 @@
 <html>
     <head>
+    <title></title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     </head>
     <body>
-        <form method="POST"> 
-        <table>
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" name="user" id="user"/></td>
-            </tr>
-            <tr>
-                <td>Message:</td>
-                <td><input type="text" name="message" id="message"/></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                <input type="submit" name="submit">
-                </td>
-            </tr>
-        </table>
-        </form>
-        <p name="enteredName"><%= message %></p>
-        <p name="enteredUser"><%= user %></p>
-        <p name="enteredText"><%= data %></p>
-        <p name="enteredDate"><%= date %></p>
+        <div>
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Loyalty One Challenge</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse navbar-right" aria-expanded="false" style="height: 1px;">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <section ng-view>
+        </section>
+    </div>
+
+    <script type="text/javascript" src="/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/challenge/challenge.client.module.js"></script>
+    <script type="text/javascript" src="/challenge/controllers/challenge.client.controller.js"></script>
+    <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+
+    <script type="text/javascript" src="/challenge/services/challenge.client.service.js"></script> 
+    <script type="text/javascript" src="/challenge/config/challenge.client.routes.js"></script>
+
+    <script type="text/javascript" src="/application.js"></script>
+
     </body>
 </html>

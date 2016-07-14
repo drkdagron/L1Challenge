@@ -12,7 +12,9 @@
     "zombie": "^4.2.1",
     "ejs": "*",
     "body-parser": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "method-override": "*",
+    "morgan": "*"
   },
   "devDependencies": {
     "chai": "^3.5.0",
