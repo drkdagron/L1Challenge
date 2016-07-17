@@ -1,8 +1,7 @@
 var mongoose = require('mongoose'),
-    CommentSchema = require('./comment.server.model'),
     Schema = mongoose.Schema;
 
-var MessageSchema = new Schema({
+var CommentSchema = new Schema({
     created: {
         type:Date,
         default: Date.now
@@ -10,13 +9,9 @@ var MessageSchema = new Schema({
     user: {
         type:String
     },
-    message: {
+    comment: {
         type:String
-    },
-    comments: {
-        type:[CommentSchema]
     }
-
 });
 
-mongoose.model('Message', MessageSchema);
+mongoose.model('Comment', CommentSchema);

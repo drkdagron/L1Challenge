@@ -1,0 +1,30 @@
+<section ng-controller="CommentController" data-ng-init="findComments()">
+
+    <div class="well">
+        <h3>{{comment.user}}</h3>
+        <h4>{{comment.message}}</h4>
+    </div>
+    <form name="myform"> 
+
+        <div class="well">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" name="commuser" id="commuser" data-ng-model="commuser" class="form-control" placeholder="Username" required/>
+            </div>
+            <div class="form-group">
+                <label>Comment:</label>
+                <input type="text" name="commmsg" id="commmsg" data-ng-model="commmsg" class="form-control" placeholder="Comment" required/>
+            </div>
+            <div class="form-group">
+                <button ng-disabled="myform.$invalid" type="button" ng-click="createComment()" class="btn btn-default">Leave Comment</button>
+            </div>
+        </div>
+        </form>
+    <hr>
+
+    <div>
+            <div ng-repeat="comm in comment.comments">
+                <p>comment???</p>
+            </div>
+        </div>
+</section>

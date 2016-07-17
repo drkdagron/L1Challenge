@@ -1,4 +1,5 @@
 var msg = require('mongoose').model('Message');
+var comment = require('mongoose').model('Comment');
 
 exports.post = function(req, res, next)
 {
@@ -27,8 +28,49 @@ exports.list = function(req,res){
     });
 };
 
+exports.getcomments = function(req, res, next)
+{
+    msg.findOne({'_id':req.params}, function(err, msgs) {
+        if (err) return next(err);
+
+        res.json(msgs);
+    });
+};
+exports.postcomment = function(req, res, next) 
+{
+    console.log('posting comment');
+    console.log(req.body);
+    var comm = new comment();
+    comm.user = req.body.commusername;
+    comm.comment = req.body.commmessage;
+    console.log("comm object: " + comm);
+
+    msg.findOne({'_id':req.body.commid}, function(err, post)
+    {   
+        if (err) throw err;
+
+        post.comments.push(comm);
+
+        console.log("inside find and after push: " + post);
+
+        post.save(function( err, fin) {
+            res.json(post);
+        });
+        console.log(post);
+    });
+};
+
+
+exports.getpostsby = function(req, res, next)
+{
+    msg.find({'user':req.params}, function(err, msgs) {
+       res.json(msgs); 
+    });
+};
+
 exports.getposts = function(req, res, next)
 {
+    console.log('return all posts');
     msg.find(function(err, msgs) {
         if (err) return next(err);
 

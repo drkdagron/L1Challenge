@@ -22,8 +22,18 @@
         <div class="well">
             <div class="form-group">
             <label>Find Submissions by user:</label>
-            <select class="form-control" ng-options="item as item.user for item in courses track by item._id" ng-model="selected"></select>
+            <select class="form-control" name="selecter" ng-selected="item" ng-options="item as item.user for item in course track by item.user" ng-model="courses" ng-change="findByUser()"></select>
+            <button ng-click="find()">Reset</button>
         </div>
     </div>
     <hr>
+
+    <div>
+        <div ng-repeat="item in courses">
+            <h3>{{item.user}}</h3><a ng-href="/#!/comments/{{item._id}}">Comments</a>
+            <h4>{{item.message}}</h4>
+            <div ng-repeat="comm in courses.comments">
+            </div>
+        </div>
+    </div>
 </section>
