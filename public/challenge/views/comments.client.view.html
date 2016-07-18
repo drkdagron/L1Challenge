@@ -22,9 +22,11 @@
         </form>
     <hr>
 
+    
     <div>
-            <div ng-repeat="comm in comment.comments">
-                <p>comment???</p>
-            </div>
+        <div class="well" ng-repeat="comm in comment.comments">
+            <h3>Username: <strong>{{comm.user}}</strong></h3>
+            <h4>Comment: <strong>{{comm.comment}}</strong></h4>
         </div>
+    </div>
 </section>

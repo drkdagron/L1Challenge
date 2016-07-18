@@ -7,19 +7,21 @@
     "test": "mocha"
   },
   "dependencies": {
-    "express": "^4.14.0",
-    "supertest": "^1.2.0",
-    "zombie": "^4.2.1",
-    "ejs": "*",
     "body-parser": "*",
-    "mongoose": "*",
+    "ejs": "*",
+    "express": "^4.14.0",
     "method-override": "*",
-    "morgan": "*"
+    "mongoose": "*",
+    "morgan": "*",
+    "openweather-node": "0.0.4",
+    "supertest": "^1.2.0",
+    "zombie": "^4.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "express": "^4.14.0",
     "mocha": "^2.5.3",
+    "node-geocoder": "^3.13.0",
     "supertest": "^1.2.0",
     "zombie": "^4.2.1"
   },

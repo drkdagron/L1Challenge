@@ -15,7 +15,20 @@ var MessageSchema = new Schema({
     },
     comments: {
         type:[CommentSchema]
-    }
+    },
+    city: {
+        type:String
+    },
+    longitude: {
+        type:String
+    },
+    latitude: {
+        type:String
+    },
+    currWeather: {
+        type:String,
+        default:'0'
+    },
 
 });
 

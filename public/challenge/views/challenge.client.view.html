@@ -14,6 +14,10 @@
                 <input type="text" name="message" id="message" data-ng-model="message" class="form-control" placeholder="Message" required/>
             </div>
             <div class="form-group">
+                <label>City: </label>
+                <input type="text" name="city" id="city" data-ng-model="city" class="form-control" placeholder="City" required/>
+            </div>
+            <div class="form-group">
                 <button ng-disabled="myform.$invalid" type="button" ng-click="create()" class="btn btn-default">Submit</button>
             </div>
         </div>
@@ -29,10 +33,27 @@
     <hr>
 
     <div>
-        <div ng-repeat="item in courses">
-            <h3>{{item.user}}</h3><a ng-href="/#!/comments/{{item._id}}">Comments</a>
-            <h4>{{item.message}}</h4>
-            <div ng-repeat="comm in courses.comments">
+        <div class="well" ng-repeat="item in courses">
+            <h3>Username: <strong>{{item.user}}</strong></h3>
+            <h4>Comment: <strong>{{item.message}}</strong></h4>
+            <h6>City: <strong>{{item.city}}</strong></h6> 
+            <h6>Long: <strong>{{item.longitude}}</strong></h6>   
+            <h6>Lat: <strong>{{item.latitude}}</strong></h6>   
+            <h6>Temp:<strong>{{item.currWeather}}c</strong></h6>
+            <div class="well">
+                <div ng-show="item.comments.length == 0">
+                    <p><b>No comments yet!</b></p>
+                    <a ng-href="/#!/comments/{{item._id}}">Leave Comment</a>
+                </div>
+                <div ng-show="item.comments.length > 0">
+                <p><b>Comments:</b></p>
+                    <div ng-repeat="comm in item.comments">
+                        <div style="padding-left:3em"><b>Username:</b> {{comm.user}}</div>
+                        <div style="padding-left:5em"><b>Comment:</b> {{comm.comment}}</div>
+                        <hr>
+                    </div>
+                    <a ng-href="/#!/comments/{{item._id}}">Leave Comment</a>
+                </div>
             </div>
         </div>
     </div>

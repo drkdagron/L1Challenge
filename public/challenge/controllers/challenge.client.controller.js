@@ -5,7 +5,8 @@ angular.module('challenge').controller('ChallengeController', ['$scope', '$windo
         {
             var msg = new Challenge({
                 user: this.user,
-                message: this.message
+                message: this.message,
+                city: this.city
             });
 
             msg.$save(function (response)
