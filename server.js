@@ -16,3 +16,4 @@ var httpsServer = https.createServer(credentials, app);
 httpsServer.listen(8443);
 
 console.log("Server running at http://localhost:3000");
+console.log("Secure Server running at https://localhost:8443");
