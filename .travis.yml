@@ -4,5 +4,6 @@ install:
         - npm install
         - npm install -g mocha
         - npm install mongoose
+        - npm install -g openweather-node
 script:
         - npm test

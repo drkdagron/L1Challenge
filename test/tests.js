@@ -47,17 +47,19 @@ describe('REST return text', function () {
 });
 describe('Form entry', function() {
     it ('Should show form', function(done){ 
-        browser.visit('/', function()
+        browser.visit('#!/', function()
         { 
             browser.assert.attribute('form', 'method', 'POST');
             browser.assert.element('form input[name=message]');
+            browser.assert.element('form input[name=user]');
+            browser.assert.element('form input[name=city]');
             done(); 
         });
     });
     describe ('Submit Form', function() {
 
         before(function() {
-            return browser.visit('/');
+            return browser.visit('#!/');
         });
         before(function() {
             browser.fill('message', 'Testing');
@@ -78,7 +80,7 @@ describe('Form entry', function() {
 });
 describe ('Username', function() {
     it ('should show user', function(done){
-        browser.visit('/', function() {
+        browser.visit('#!/', function() {
             browser.assert.element('form input[name=user]');
             done();
         });
